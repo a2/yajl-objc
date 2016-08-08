@@ -119,13 +119,13 @@ NSString *const YAJLGenInvalidObjectException = @"YAJLGenInvalidObjectException"
 
 - (void)number:(NSNumber *)number {
   NSString *s = [number stringValue];
-  unsigned int length = [s lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+  unsigned int length = (unsigned int)[s lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
   const char *c = [s UTF8String];
   yajl_gen_number(gen_, c, length);
 }
 
 - (void)string:(NSString *)s {
-  unsigned int length = [s lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+  unsigned int length = (unsigned int)[s lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
   const unsigned char *c = (const unsigned char *)[s UTF8String]; 
   yajl_gen_string(gen_, c, length);
 }
